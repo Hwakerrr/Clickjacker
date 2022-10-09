@@ -7,13 +7,13 @@
     <title>Clickjacker</title>
 </head>
 <body>
-    <div style="background-color: red;width: 50%;height: 50%;">
+    <div style="background-color: red;width: 100%;height: 50%;">
          <h4>URL:</h4>
          <input id="url" type="text">
          <button id="submit">submit</button>
     </div>
-    <div style="background-color:green;">
-         <iframe id="frame" src="" width="500" height="500"></iframe>
+    <div style="background-color:green; width: 100%; height: 1000;">
+         <iframe id="frame" src="" width="100%" height="100%"></iframe>
     </div>
 </body>
 <script>
@@ -23,10 +23,16 @@
 
     function clickjack(){
     
-    if(url.value !== null ){
-    frame.src = url.value;}
+    if(url.value == "" || url.value == null){
+        alert("Please insert the URL");
+    }
     else{
-        alert("Please insert URL");
+        if(url.value.includes("http://") || url.value.includes("https://") ){
+            frame.src = url.value;
+        }else{
+            alert("Please include http:// or https:// before the valid domain")
+        }
+        
     }
 
 
